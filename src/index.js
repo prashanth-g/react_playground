@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Jsx from './Jsx';
-import Message from './Message';
+import Jsx from './modules/Jsx';
+import Message from './modules/Message';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Jsx />, document.getElementById('root'));

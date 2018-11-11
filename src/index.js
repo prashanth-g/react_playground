@@ -39,3 +39,26 @@ ReactDOM.render(
     <Clock />,
     document.getElementById('root')
 );
+
+// event handling
+
+class ActionLink extends React.Component {
+  handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  render() {
+    return (
+      <a href="#" onClick={this.handleClick}>
+        Click me
+      </a>
+    );
+  }
+}
+
+ReactDOM.render(
+  <ActionLink />,
+  document.getElementById('dev')
+);
+

@@ -1,5 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import Jsx from './modules/Jsx';
+import Message from './modules/Message';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(<Jsx />, document.getElementById('root'));
+
+// ReactDOM.render(<App />, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+
+function tick() {
+    const element = (
+      <div>
+        <h2>The current time is {new Date().toLocaleTimeString()}.</h2>
+      </div>
+    );
+    ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+
+ReactDOM.render(<Message />, document.getElementById('dev01'));
 
 class Clock extends React.Component {
 
@@ -37,7 +62,7 @@ class Clock extends React.Component {
 
 ReactDOM.render(
     <Clock />,
-    document.getElementById('root')
+    document.getElementById('dev01')
 );
 
 // event handling
@@ -59,6 +84,8 @@ class ActionLink extends React.Component {
 
 ReactDOM.render(
   <ActionLink />,
-  document.getElementById('dev')
+  document.getElementById('dev03')
 );
+
+serviceWorker.unregister();
 

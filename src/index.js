@@ -1,29 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Jsx from './modules/Jsx';
-import Message from './modules/Message';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Jsx />, document.getElementById('root'));
+class Clock extends React.Component {
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-
-function tick() {
-    const element = (
+  render() {
+    return (
       <div>
-        <h2>The current time is {new Date().toLocaleTimeString()}.</h2>
+        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
       </div>
-    );
-    ReactDOM.render(element, document.getElementById('root'));
+    )
+  }
+}
+
+// Render Clock
+function tick() {
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById('root')
+  );
 }
 
 setInterval(tick, 1000);
-
-ReactDOM.render(<Message />, document.getElementById('dev'));
-
-serviceWorker.unregister();

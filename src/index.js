@@ -111,5 +111,30 @@ class Toggle extends React.Component {
 
 ReactDOM.render(<Toggle />, document.getElementById('dev04'));
 
+class UserGreeting extends React.Component {
+  render() {
+    return(<h1>Hello User!</h1>);
+  }
+}
+
+class GuestGreeting extends React.Component {
+  render() {
+    return <h1>Hello Guest!</h1>;
+  }
+}
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if(isLoggedIn) {
+    return <UserGreeting />
+  }
+  return <GuestGreeting />
+}
+
+ReactDOM.render(
+  <Greeting isLoggedIn={true} />,
+  document.getElementById('dev05')
+);
+
 serviceWorker.unregister();
 

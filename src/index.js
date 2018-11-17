@@ -195,5 +195,25 @@ ReactDOM.render(
   document.getElementById('dev06')
 )
 
+class MailBox extends React.Component {
+
+  render() {
+    const unreadMessages = this.props.unreadMessages;
+    return(
+      <div>
+        <h2>Hey...</h2>
+        {unreadMessages.length > 0 && <h2> You have {unreadMessages.length} unread messages!</h2>}
+      </div>
+    );
+  }
+}
+
+const messages = ['JSON', 'Re:JSON', 'JS', 'DS', 'Lua'];
+
+ReactDOM.render(
+  <MailBox unreadMessages = {messages}/>,
+  document.getElementById('dev07')
+)
+
 serviceWorker.unregister();
 

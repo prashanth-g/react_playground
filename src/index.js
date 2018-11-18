@@ -218,7 +218,7 @@ ReactDOM.render(
 class WarningBanner extends React.Component {
 
   render() {
-    
+
     if(!this.props.warn) {
       return null;
     }
@@ -258,6 +258,25 @@ class Page extends React.Component {
 ReactDOM.render(
   <Page />,
   document.getElementById('dev08')
+)
+
+class NumberList extends React.Component {
+
+  render() {
+    const numbers = this.props.numbers;
+    const listItems = numbers.map((number) => 
+      <li>{number}</li>
+    );
+    return(
+      <ul>{listItems}</ul>
+    );
+  }
+}
+
+const numbers = [1,2,3,4,5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('dev10')
 )
 
 serviceWorker.unregister();

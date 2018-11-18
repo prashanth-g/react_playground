@@ -279,5 +279,33 @@ ReactDOM.render(
   document.getElementById('dev10')
 )
 
+class ListItem extends React.Component {
+  render() {
+    return(
+      <li>{this.props.value}</li>
+    );
+  }
+}
+
+class Keys extends React.Component {
+  render() {
+    const numbers = this.props.numbers;
+    const listItems = numbers.map((number) => 
+      <ListItem key={number.toString()} value = {number} />
+    );
+    return(
+      <ul>
+        {listItems}
+      </ul>
+    );
+  }
+}
+
+const numbers01 = [1,2,3,5,8]
+ReactDOM.render(
+  <Keys numbers = {numbers01}/>,
+  document.getElementById('dev11')
+) 
+
 serviceWorker.unregister();
 

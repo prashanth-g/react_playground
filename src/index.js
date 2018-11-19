@@ -342,5 +342,45 @@ ReactDOM.render(
   document.getElementById('dev12')
 )
 
+class Blog extends React.Component {
+  render() {
+    const sidebar = (
+      <ul>
+        {this.props.posts.map((post) => 
+            <li key={post.id}>
+              {post.title}
+            </li>
+        )}
+      </ul>
+    );
+
+    const content = this.props.posts.map((post) =>
+          <div>
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+          </div>  
+    );
+
+    return(
+      <div>
+        {sidebar}
+        <hr />
+        {content}
+      </div>
+    );
+  }
+}
+
+const posts = [
+  { id:1, title:'react-world', content:'Welcome to react-world' },
+  { id:2, title:'react-universe', content:'Welcome to react-universe' }
+]
+
+ReactDOM.render(
+  <Blog posts={posts} />,
+  document.getElementById('dev13')
+)
+
+
 serviceWorker.unregister();
 

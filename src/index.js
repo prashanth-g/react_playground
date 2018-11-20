@@ -54,6 +54,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+        <hr />
       </div>
     )
   }
@@ -77,7 +78,9 @@ class ActionLink extends React.Component {
     return (
       <a href="#" onClick={this.handleClick}>
         Click me
+        <hr />
       </a>
+      
     );
   }
 }
@@ -104,6 +107,7 @@ class Toggle extends React.Component {
     return(
       <button onClick={this.handleClick}>
          {this.state.isToggleOn ? 'ON' : 'OFF'}
+         
       </button>
     );
   }
@@ -203,6 +207,7 @@ class MailBox extends React.Component {
       <div>
         <h2>Hey...</h2>
         {unreadMessages.length > 0 && <h2> You have {unreadMessages.length} unread messages!</h2>}
+        <hr />
       </div>
     );
   }
@@ -249,6 +254,7 @@ class Page extends React.Component {
          <button onClick = {this.handleToggleClick} >
           {this.state.showWarning ? 'Hide' : 'Show'}
          </button>
+         <hr />
       </div>
     );
   }
@@ -332,6 +338,7 @@ class NameForm extends React.Component {
           <input type="text" value={this.state.value} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit"/>
+        <hr />
       </form>
     );
   }
@@ -355,10 +362,10 @@ class Blog extends React.Component {
     );
 
     const content = this.props.posts.map((post) =>
-          <div>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-          </div>  
+      <div>
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
+      </div>  
     );
 
     return(
@@ -381,6 +388,81 @@ ReactDOM.render(
   document.getElementById('dev13')
 )
 
+class EssayForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value : 'Essay here'};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  handleSubmit(event) {
+    alert('Essay submitted: ' + this.state.value)
+    event.preventDefault();
+  }
+
+  render() {
+    return(
+      <form onSubmit={this.handleSubmit}>
+      <hr />
+        <label> Essay:
+          <textarea value={this.state.value} onChange={this.handleChange}></textarea>
+        </label>
+        <input type='submit' value='Submit essay' />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <EssayForm />,
+  document.getElementById('dev14')
+)
+
+class FruitForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: 'mango'};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('Selected value: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return(
+      <form onSubmit={this.handleSubmit}>
+      <hr />
+        <label> Select Box:
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="mango">Mango</option>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+          </select>
+        </label>
+        <input type='submit' value='Submit' />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <FruitForm />,
+  document.getElementById('dev15')
+) 
 
 serviceWorker.unregister();
 

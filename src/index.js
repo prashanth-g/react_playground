@@ -464,5 +464,50 @@ ReactDOM.render(
   document.getElementById('dev15')
 ) 
 
+class Reservation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isGoing:true,
+      numberOfGuests:2
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  render() {
+    return(
+      <form>
+         <hr />
+      <label>isGoing:</label>
+      <input name='isGoing'
+             checked={this.state.isGoing}
+             type='checkbox'
+             onChange={this.handleInputChange} />
+      <br />
+      <label>numberOfGuests:</label>
+      <input name='numberOfGuests'
+             value={this.state.numberOfGuests}
+             type='number'
+             onChange={this.handleInputChange} />
+      <input type='submit' value='Submit'/>
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Reservation />,
+  document.getElementById('dev16')
+);
+
 serviceWorker.unregister();
 

@@ -509,5 +509,16 @@ ReactDOM.render(
   document.getElementById('dev16')
 );
 
+const mountNode = document.getElementById('dev17');
+ReactDOM.render(
+  <input value='text' />,
+  mountNode);
+setTimeout( function() {
+  ReactDOM.render(
+    <input value={null} />,
+    mountNode);
+}, 10000);
+  
+
 serviceWorker.unregister();
 

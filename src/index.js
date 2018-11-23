@@ -513,12 +513,43 @@ const mountNode = document.getElementById('dev17');
 ReactDOM.render(
   <input value='text' />,
   mountNode);
-setTimeout( function() {
-  ReactDOM.render(
-    <input value={null} />,
-    mountNode);
-}, 10000);
   
+function BoilingVerdict(props) {
+  if(props.celcius > 100) {
+     return <p>The water would boil</p>;
+  } 
+  return <p>The water would not boil</p>;
+}
+
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {temperature:''};
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({temperature: event.target.value})
+  }
+
+  render() {
+    const temperature = this.state.temperature;
+    return(
+      <fieldset>
+        <legend>
+          Enter the temperature:
+        </legend>
+        <input value={temperature} onChange={this.handleChange}/>
+        <BoilingVerdict celcius={parseFloat(temperature)}/>
+      </fieldset>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Calculator />,
+  document.getElementById('dev17')
+);
 
 serviceWorker.unregister();
 

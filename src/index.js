@@ -551,5 +551,51 @@ ReactDOM.render(
   document.getElementById('dev17')
 );
 
+const scaleNames = {
+  c:'Celsius',
+  f:'Farenheit' 
+}
+
+class TemperatureData extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {temperature:''};
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({temperature: event.target.value})
+  }
+
+  render() {
+    const temperature = this.state.temperature;
+    const scale = this.props.scale;
+    return(
+      <fieldset>
+        <legend>
+          Enter the temperature in {scaleNames[scale]}
+        </legend>
+        <input value={temperature} onChange={this.handleChange}/>
+        <BoilingVerdict celcius={parseFloat(temperature)}/>
+      </fieldset>
+    );
+  }
+}
+
+class TempCalculator extends React.Component {
+  render() {
+    return(
+      <div>
+        <TemperatureData scale='c'/>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <TempCalculator />,
+  document.getElementById('dev18')
+);
+
 serviceWorker.unregister();
 

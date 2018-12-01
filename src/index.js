@@ -688,6 +688,35 @@ ReactDOM.render(
   document.getElementById('dev19')
 );
 
+class FancyBorder extends React.Component {
+  render() {
+    return(
+      <div className={'FancyBorder FancyBorder-'+ this.props.color}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class WelcomeDialog extends React.Component {
+  render() {
+    return(
+      <FancyBorder color="blue">
+        <h1 className="Dialog-Title">
+          Welcome
+        </h1>
+        <p className="Dialog-Message">
+          Thanks!
+        </p>
+      </FancyBorder>
+    );
+  }
+}
+
+ReactDOM.render(
+  <WelcomeDialog />,
+  document.getElementById('dev20')
+);
 
 serviceWorker.unregister();
 

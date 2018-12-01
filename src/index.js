@@ -718,5 +718,54 @@ ReactDOM.render(
   document.getElementById('dev20')
 );
 
+class Dialog extends React.Component {
+  render() {
+    return(
+      <FancyBorder color="blue">
+        <h1 className="Dialog-Title">
+          {this.props.title}
+        </h1>
+        <p className="Dialog-Message">
+          {this.props.message}
+        </p>
+        {this.props.children}
+      </FancyBorder>
+    );
+  }
+}
+
+class SignUpDialog extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSignUp = this.handleSignUp.bind(this);
+      this.state = {login:''};
+    }
+
+    handleChange(event) {
+      this.setState({login:event.target.value})
+    }
+
+    handleSignUp() {
+      alert(`Welcome ${this.state.login}`);
+    }
+
+    render() {
+      return(
+          <Dialog title="Mars Exploration Program" message="How to refer">
+            <input value={this.state.login} onChange={this.handleChange}/>
+            <button onClick={this.handleSignUp}> Sign Up! </button>
+          </Dialog>
+      );
+    }
+}
+
+ReactDOM.render(
+  <SignUpDialog />,
+  document.getElementById('dev21')
+);
+
+
+
 serviceWorker.unregister();
 
